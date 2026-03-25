@@ -1,7 +1,7 @@
-﻿Sys.Observer = function() {
-    #if DEBUG
+Sys.Observer = function() {
+// #if DEBUG
     throw Error.invalidOperation();
-    #endif
+// #endif
 }
 Sys.Observer.registerClass("Sys.Observer");
 
@@ -19,21 +19,21 @@ Sys.Observer.makeObservable = function(target) {
     }
     return target;
 }
-#if DEBUG
+// #if DEBUG
 Sys.Observer._ensureObservable = function(target) {
     var type = typeof target;
     if ((type === "string") || (type === "number") || (type === "boolean") || (type === "date")) {
         throw Error.invalidOperation(String.format(Sys.Res.notObservable, type));
     }
 }
-#endif
+// #endif
 Sys.Observer._addMethods = function(target, methods) {
     for (var m in methods) {
-        #if DEBUG
+// #if DEBUG
         if (target[m] && (target[m] !== methods[m])) {
             throw Error.invalidOperation(String.format(Sys.Res.observableConflict, m));
         }
-        #endif
+// #endif
         target[m] = methods[m];
     }
 }
@@ -400,3 +400,4 @@ Sys.Observer._createContext = function() {
         return ctx;
     }
 }
+

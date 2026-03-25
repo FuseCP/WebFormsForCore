@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Function.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Function.__typeName = 'Function';
 Function.__class = true;
@@ -323,3 +323,4 @@ Function._validateParameterType = function(param, expectedType, expectedInteger,
 
     return null;
 }
+

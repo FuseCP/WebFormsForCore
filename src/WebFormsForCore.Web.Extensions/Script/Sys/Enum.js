@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Enum.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 function Sys$Enum$parse(value, ignoreCase) {
     /// <summary>
@@ -101,11 +101,11 @@ function Sys$Enum$toString(value) {
         }
         if (parts.length && v === 0) return parts.reverse().join(', ');
     }
-    #if DEBUG
+// #if DEBUG
     throw Error.argumentOutOfRange('value', value, String.format(Sys.Res.enumInvalidValue, value, this.__typeName));
     #else
     return '';
-    #endif
+// #endif
 }
 
 Type.prototype.registerEnum = function(name, flags) {
@@ -125,7 +125,7 @@ Type.prototype.registerEnum = function(name, flags) {
     /// </example>
     /// <param name="name" type="String">The fully-qualified name of the enum.</param>
     /// <param name="flags" type="Boolean" optional="true">True if the enum is a flags collection.</param>
-    #if DEBUG
+// #if DEBUG
     if (!Type.__fullyQualifiedIdentifierRegExp.test(name)) throw Error.argument('name', Sys.Res.notATypeName);
     // Check if the type name parses to an existing object that matches this.
     var parsedName;
@@ -143,7 +143,7 @@ Type.prototype.registerEnum = function(name, flags) {
         if (typeof(val) !== 'number' || (val % 1) !== 0) throw Error.invalidOperation(Sys.Res.enumValueNotInteger);
         if (typeof(this[j]) !== 'undefined') throw Error.invalidOperation(String.format(Sys.Res.enumReservedName, j));
     }
-    #endif
+// #endif
     Sys.__upperCaseTypes[name.toUpperCase()] = this;
 
     for (var i in this.prototype) {
@@ -171,3 +171,4 @@ Type.isFlags = function(type) {
     if ((typeof(type) === 'undefined') || (type === null)) return false;
     return !!type.__flags;
 }
+

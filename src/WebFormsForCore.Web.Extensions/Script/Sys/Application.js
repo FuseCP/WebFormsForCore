@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Application.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys._Application = function() {
     /// <summary locid="M:J#Sys.Application.#ctor"/>
@@ -63,14 +63,14 @@ Sys._Application.prototype = {
     addComponent: function(component) {
         /// <summary locid="M:J#Sys.Application.addComponent">Adds a top-level component to the application.</summary>
         /// <param name="component" type="Sys.Component">The component to add.</param>
-        #if DEBUG
+// #if DEBUG
         var id = component.get_id();
         if (!id) throw Error.invalidOperation(Sys.Res.cantAddWithoutId);
         if (typeof(this._components[id]) !== 'undefined') throw Error.invalidOperation(String.format(Sys.Res.appDuplicateComponent, id));
         this._components[id] = component;
         #else
         this._components[component.get_id()] = component;
-        #endif
+// #endif
     },
     beginCreateComponents: function() {
         /// <summary locid="M:J#Sys.Application.beginCreateComponents"/>
@@ -411,3 +411,4 @@ Sys._Application.registerClass('Sys._Application', Sys.Component, Sys.IContainer
 Sys.Application = new Sys._Application();
 
 var $find = Sys.Application.findComponent;
+

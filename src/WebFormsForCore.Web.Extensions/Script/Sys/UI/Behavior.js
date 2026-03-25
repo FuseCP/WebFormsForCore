@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Behavior.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.Behavior = function(element) {
     /// <param name="element" domElement="true">The DOM element the behavior is associated with.</param>
@@ -43,13 +43,13 @@ Sys.UI.Behavior.prototype = {
         return name;
     },
     set_name: function(value) {
-        #if DEBUG
+// #if DEBUG
         if ((value === '') || (value.charAt(0) === ' ') || (value.charAt(value.length - 1) === ' '))
             throw Error.argument('value', Sys.Res.invalidId);
         if (typeof(this._element[value]) !== 'undefined')
             throw Error.invalidOperation(String.format(Sys.Res.behaviorDuplicateName, value));
         if (this.get_isInitialized()) throw Error.invalidOperation(Sys.Res.cantSetNameAfterInit);
-        #endif
+// #endif
         this._name = value;
     },
     initialize: function() {
@@ -116,3 +116,4 @@ Sys.UI.Behavior.getBehaviorsByType = function(element, type) {
     }
     return results;
 }
+

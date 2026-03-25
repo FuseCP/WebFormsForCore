@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Debug.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys._Debug = function() {
     /// <summary locid="M:J#Sys.Debug.#ctor">Provides a set of methods that help debug your code.</summary>
@@ -160,8 +160,9 @@ Sys._Debug.prototype = {
 Sys._Debug.registerClass('Sys._Debug');
 
 Sys.Debug = new Sys._Debug();
-#if DEBUG
+// #if DEBUG
     Sys.Debug.isDebug = true;
 #else
     Sys.Debug.isDebug = false;
-#endif
+// #endif
+

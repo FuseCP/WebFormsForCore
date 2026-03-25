@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="DomEvent.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.DomEvent = function(eventObject) {
     /// <summary>A cross-browser object that represents event properties.</summary>
@@ -98,10 +98,10 @@ var $addHandler = Sys.UI.DomEvent.addHandler = function(element, eventName, hand
     /// Whether the handler should be removed automatically when the element is disposed of,
     /// such as when an UpdatePanel refreshes, or Sys.Application.disposeElement is called.
     /// </param>
-    #if DEBUG
+// #if DEBUG
     Sys.UI.DomEvent._ensureDomNode(element);
     if (eventName === "error") throw Error.invalidOperation(Sys.Res.addHandlerCantBeUsedForError);
-    #endif
+// #endif
     if (!element._events) {
         element._events = {};
     }
@@ -232,8 +232,7 @@ Sys.UI.DomEvent._removeHandler = function(element, eventName, handler) {
     }
     cache.splice(i, 1);
 }
-
-#if DEBUG
+// #if DEBUG
 Sys.UI.DomEvent._ensureDomNode = function(element) {
     // DevDiv Bugs 100697: Accessing element.document causes dynamic script nodes to load prematurely.
     // DevDiv Bugs 124696: Firefox warns on undefined property element.tagName, added first part of IF
@@ -249,4 +248,5 @@ Sys.UI.DomEvent._ensureDomNode = function(element) {
         throw Error.argument("element", Sys.Res.argumentDomNode);
     }
 }
-#endif
+// #endif
+

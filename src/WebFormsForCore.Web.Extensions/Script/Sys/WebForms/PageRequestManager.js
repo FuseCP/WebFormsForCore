@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="PageRequestManager.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.WebForms.PageRequestManager = function() {
     this._form = null;
@@ -1920,3 +1920,4 @@ Sys.WebForms.PageRequestManager._initialize = function() {
 }
 
 Sys.WebForms.PageRequestManager.registerClass('Sys.WebForms.PageRequestManager');
+

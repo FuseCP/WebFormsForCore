@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="BeginRequestEventArgs.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
 
 Sys.WebForms.BeginRequestEventArgs = function(request, postBackElement, updatePanelsToUpdate) {
     /// <summary>The arguments for the PageRequestManager's beginRequest event.
@@ -40,3 +40,4 @@ Sys.WebForms.BeginRequestEventArgs.prototype = {
 }
 
 Sys.WebForms.BeginRequestEventArgs.registerClass('Sys.WebForms.BeginRequestEventArgs', Sys.EventArgs);
+

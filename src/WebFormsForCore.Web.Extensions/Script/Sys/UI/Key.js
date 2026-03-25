@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Key.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.Key = function() {
     /// <summary>
@@ -43,3 +43,4 @@ Sys.UI.Key.prototype = {
     del: 127
 }
 Sys.UI.Key.registerEnum("Sys.UI.Key");
+

@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Control.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.Control = function(element) {
     /// <param name="element" domElement="true">The DOM element the behavior is associated with.</param>
@@ -55,7 +55,7 @@ Sys.UI.Control.prototype = {
         return null;
     },
     set_parent: function(value) {
-        #if DEBUG
+// #if DEBUG
         if (!this._element) throw Error.invalidOperation(Sys.Res.cantBeCalledAfterDispose);
         var parents = [this];
         var current = value;
@@ -64,7 +64,7 @@ Sys.UI.Control.prototype = {
             parents[parents.length] = current;
             current = current.get_parent();
         }
-        #endif
+// #endif
         this._parent = value;
     },
     get_role: function() {
@@ -141,3 +141,4 @@ Sys.UI.Control.prototype = {
     }
 }
 Sys.UI.Control.registerClass('Sys.UI.Control', Sys.Component);
+

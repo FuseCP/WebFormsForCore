@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="WebServiceProxy.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.Net.WebServiceProxy = function() {
 }
@@ -120,7 +120,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                 jsonpComplete({ Message: String.format(Sys.Res.webServiceFailedNoMsg, methodName) }, -1);
             }
         });
-        #if DEBUG
+// #if DEBUG
         #else
         function jsonpTimeout() {
             if (timeoutcookie === null) return;
@@ -132,7 +132,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                 onFailure(error, userContext, methodName);
             }            
         }
-        #endif
+// #endif
         function jsonpComplete(data, statusCode) {
             if (timeoutcookie !== null) {
                 window.clearTimeout(timeoutcookie);
@@ -154,7 +154,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                     error._statusCode = statusCode;
                     onFailure(error, userContext, methodName);
                 }
-                #if DEBUG
+// #if DEBUG
                 else {
                     if (data.StackTrace && data.Message) {
                         error = data.StackTrace + "-- " + data.Message;
@@ -165,21 +165,21 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                     error = String.format(error ? Sys.Res.webServiceFailed : Sys.Res.webServiceFailedNoMsg, methodName, error);
                     throw Sys.Net.WebServiceProxy._createFailedError(methodName, String.format(Sys.Res.webServiceFailed, methodName, error));
                 }
-                #endif
+// #endif
             }
             else if (onSuccess) {
                 onSuccess(data, userContext, methodName);
             }
         }
         Sys[tempCallback] = jsonpComplete;
-        #if DEBUG
+// #if DEBUG
         #else
         // timeout only in release mode (a timeout would interfere with debugging, etc)
         timeout = timeout || Sys.Net.WebRequestManager.get_defaultTimeout();
         if (timeout > 0) {
             timeoutcookie = window.setTimeout(jsonpTimeout, timeout);
         }
-        #endif
+// #endif
         loader.execute();
         return null;
     }
@@ -239,7 +239,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                     result._statusCode = statusCode;
                     onFailure(result, userContext, methodName);
                 }
-                #if DEBUG
+// #if DEBUG
                 else {
                     // In debug mode, if no error was registered, display some trace information
                     if (result && errorObj) {
@@ -254,7 +254,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
                     // DevDiv 89485: throw, not alert()
                     throw Sys.Net.WebServiceProxy._createFailedError(methodName, String.format(Sys.Res.webServiceFailed, methodName, error));
                 }
-                #endif
+// #endif
             }
             else if (onSuccess) {
                 onSuccess(result, userContext, methodName);
@@ -271,20 +271,19 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
             if (onFailure) {
                 onFailure(new Sys.Net.WebServiceError(response.get_timedOut(), msg, "", ""), userContext, methodName);
             }
-            #if DEBUG
+// #if DEBUG
             else {
                 // In debug mode, if no error was registered, display some trace information
                 // DevDiv 89485: throw, don't alert()
                 throw Sys.Net.WebServiceProxy._createFailedError(methodName, msg);
             }
-            #endif
+// #endif
         }
     }
 
     return request;
 }
-
-#if DEBUG
+// #if DEBUG
 Sys.Net.WebServiceProxy._createFailedError = function(methodName, errorMessage) {
     var displayMessage = "Sys.Net.WebServiceFailedException: " + errorMessage;
     var e = Error.create(displayMessage, { 'name': 'Sys.Net.WebServiceFailedException', 'methodName': methodName });
@@ -296,7 +295,7 @@ Sys.Net.WebServiceProxy._defaultFailedCallback = function(err, methodName) {
     var error = err.get_exceptionType() + "-- " + err.get_message();
     throw Sys.Net.WebServiceProxy._createFailedError(methodName, String.format(Sys.Res.webServiceFailed, methodName, error));
 }
-#endif
+// #endif
 
 // Generate a constructor that knows how to build objects of a particular server type,
 // and then initialize it from the fields of an arbitrary object.
@@ -317,3 +316,4 @@ Sys._jsonp = 0;
 
 // regexp used to a uri scheme and host name. The characters included for the scheme are based on RFC2396 section 3.1.
 Sys.Net.WebServiceProxy._xdomain = /^\s*([a-zA-Z0-9\+\-\.]+\:)\/\/([^?#\/]+)/;
+
