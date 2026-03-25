@@ -154,10 +154,10 @@ var $addHandlers = Sys.UI.DomEvent.addHandlers = function(element, events, handl
     /// Whether the handler should be removed automatically when the element is disposed of,
     /// such as when an UpdatePanel refreshes, or when Sys.Application.disposeElement is called.
     /// </param>
-    ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
+// ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
     for (var name in events) {
         var handler = events[name];
-        ##DEBUG if (typeof(handler) !== 'function') throw Error.invalidOperation(Sys.Res.cantAddNonFunctionhandler);
+// ##DEBUG if (typeof(handler) !== 'function') throw Error.invalidOperation(Sys.Res.cantAddNonFunctionhandler);
         if (handlerOwner) {
             handler = Function.createDelegate(handlerOwner, handler);
         }
@@ -170,7 +170,7 @@ var $clearHandlers = Sys.UI.DomEvent.clearHandlers = function(element) {
     ///   Clears all the event handlers that were added to the element.
     /// </summary>
     /// <param name="element">The element or text node.</param>
-    ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
+// ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
     Sys.UI.DomEvent._clearHandlers(element, false);
 }
 
@@ -212,18 +212,18 @@ var $removeHandler = Sys.UI.DomEvent.removeHandler = function(element, eventName
     Sys.UI.DomEvent._removeHandler(element, eventName, handler);
 }
 Sys.UI.DomEvent._removeHandler = function(element, eventName, handler) {
-    ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
+// ##DEBUG Sys.UI.DomEvent._ensureDomNode(element);
     var browserHandler = null;
-    ##DEBUG if ((typeof(element._events) !== 'object') || !element._events) throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
+// ##DEBUG if ((typeof(element._events) !== 'object') || !element._events) throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
     var cache = element._events[eventName];
-    ##DEBUG if (!(cache instanceof Array)) throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
+// ##DEBUG if (!(cache instanceof Array)) throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
     for (var i = 0, l = cache.length; i < l; i++) {
         if (cache[i].handler === handler) {
             browserHandler = cache[i].browserHandler;
             break;
         }
     }
-    ##DEBUG if (typeof(browserHandler) !== 'function') throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
+// ##DEBUG if (typeof(browserHandler) !== 'function') throw Error.invalidOperation(Sys.Res.eventHandlerInvalid);
     if (element.removeEventListener) {
         element.removeEventListener(eventName, browserHandler, false);
     }
@@ -249,4 +249,5 @@ Sys.UI.DomEvent._ensureDomNode = function(element) {
     }
 }
 // #endif
+
 

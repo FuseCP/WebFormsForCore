@@ -68,7 +68,7 @@ Sys._Application.prototype = {
         if (!id) throw Error.invalidOperation(Sys.Res.cantAddWithoutId);
         if (typeof(this._components[id]) !== 'undefined') throw Error.invalidOperation(String.format(Sys.Res.appDuplicateComponent, id));
         this._components[id] = component;
-        #else
+//         #else
         this._components[component.get_id()] = component;
 // #endif
     },
@@ -411,4 +411,5 @@ Sys._Application.registerClass('Sys._Application', Sys.Component, Sys.IContainer
 Sys.Application = new Sys._Application();
 
 var $find = Sys.Application.findComponent;
+
 

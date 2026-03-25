@@ -121,7 +121,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
             }
         });
 // #if DEBUG
-        #else
+//         #else
         function jsonpTimeout() {
             if (timeoutcookie === null) return;
             timeoutcookie = null;
@@ -173,7 +173,7 @@ Sys.Net.WebServiceProxy.invoke = function(servicePath, methodName, useGet, param
         }
         Sys[tempCallback] = jsonpComplete;
 // #if DEBUG
-        #else
+//         #else
         // timeout only in release mode (a timeout would interfere with debugging, etc)
         timeout = timeout || Sys.Net.WebRequestManager.get_defaultTimeout();
         if (timeout > 0) {
@@ -316,4 +316,5 @@ Sys._jsonp = 0;
 
 // regexp used to a uri scheme and host name. The characters included for the scheme are based on RFC2396 section 3.1.
 Sys.Net.WebServiceProxy._xdomain = /^\s*([a-zA-Z0-9\+\-\.]+\:)\/\/([^?#\/]+)/;
+
 

@@ -91,7 +91,7 @@ Sys.Net.XMLHttpExecutor = function() {
             _this._clearTimer();
             _this._responseAvailable = true;
 // #if DEBUG
-            #else
+//             #else
             try {
 // #endif
                 // DevDiv Bugs 148214: Use try/finally to ensure cleanup occurs even
@@ -99,7 +99,7 @@ Sys.Net.XMLHttpExecutor = function() {
                 // postbacks where a server-side exception occurred)
                 _this._webRequest.completed(Sys.EventArgs.Empty);
 // #if DEBUG
-            #else
+//             #else
             }
             finally {
 // #endif
@@ -108,7 +108,7 @@ Sys.Net.XMLHttpExecutor = function() {
                     _this._xmlHttpRequest = null;
                 }
 // #if DEBUG
-            #else
+//             #else
             }
 // #endif
         }
@@ -366,4 +366,5 @@ Sys.Net.XMLHttpExecutor.prototype = {
     }
 }
 Sys.Net.XMLHttpExecutor.registerClass('Sys.Net.XMLHttpExecutor', Sys.Net.WebRequestExecutor);
+
 

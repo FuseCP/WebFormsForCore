@@ -8,7 +8,7 @@
  
 Sys.INotifyPropertyChange = function() {
     /// <summary>Implement this interface to become a provider of property change notifications.</summary>
-    ##DEBUG throw Error.notImplemented();
+// ##DEBUG throw Error.notImplemented();
 }
 Sys.INotifyPropertyChange.prototype = {
 // #if DEBUG
@@ -21,4 +21,5 @@ Sys.INotifyPropertyChange.prototype = {
 // #endif
 }
 Sys.INotifyPropertyChange.registerInterface('Sys.INotifyPropertyChange');
+
 

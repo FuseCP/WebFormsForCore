@@ -162,7 +162,8 @@ Sys._Debug.registerClass('Sys._Debug');
 Sys.Debug = new Sys._Debug();
 // #if DEBUG
     Sys.Debug.isDebug = true;
-#else
+// #else
     Sys.Debug.isDebug = false;
 // #endif
+
 

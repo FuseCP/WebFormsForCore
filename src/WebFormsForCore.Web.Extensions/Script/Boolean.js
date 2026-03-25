@@ -17,6 +17,7 @@ Boolean.parse = function(value) {
     var v = value.trim().toLowerCase();
     if (v === 'false') return false;
     if (v === 'true') return true;
-    ##DEBUG throw Error.argumentOutOfRange('value', value, Sys.Res.boolTrueOrFalse);
+// ##DEBUG throw Error.argumentOutOfRange('value', value, Sys.Res.boolTrueOrFalse);
 }
+
 

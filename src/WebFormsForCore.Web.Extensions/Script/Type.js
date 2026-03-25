@@ -19,8 +19,8 @@ window.Type = Function;
 // ********************************************************************************************
 // NOTE: update ScriptComponentDescriptor.cs with any change to this expression
 // so server and client-side are in sync.
-##DEBUG Type.__fullyQualifiedIdentifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]([^ \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*[^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\])?$", "i");
-##DEBUG Type.__identifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\][^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*$", "i");
+// ##DEBUG Type.__fullyQualifiedIdentifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]([^ \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*[^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\])?$", "i");
+// ##DEBUG Type.__identifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\][^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*$", "i");
 
 Type.prototype.callBaseMethod = function(instance, name, baseArguments) {
     /// <param name="instance">The instance for the base method. Usually 'this'.</param>
@@ -216,7 +216,7 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
     // are actually interface parameters.
     if (interfaceTypes) {
         this.__interfaces = [];
-        ##DEBUG this.resolveInheritance();
+// ##DEBUG this.resolveInheritance();
         for (var i = 2, l = arguments.length; i < l; i++) {
             var interfaceType = arguments[i];
 // #if DEBUG
@@ -231,7 +231,7 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
             this.__interfaces.push(interfaceType);
         }
     }
-    ##DEBUG Sys.__registeredTypes[typeName] = true;
+// ##DEBUG Sys.__registeredTypes[typeName] = true;
 
     return this;
 }
@@ -260,7 +260,7 @@ Type.prototype.registerInterface = function(typeName) {
     this.prototype.constructor = this;
     this.__typeName = typeName;
     this.__interface = true;
-    ##DEBUG Sys.__registeredTypes[typeName] = true;
+// ##DEBUG Sys.__registeredTypes[typeName] = true;
 
     return this;
 }
@@ -342,7 +342,7 @@ Type.parse = function(typeName, ns) {
     fn = Type.__htClasses[typeName];
     if (!fn) {
         fn = eval(typeName);
-        ##DEBUG if (typeof(fn) !== 'function') throw Error.argument('typeName', Sys.Res.notATypeName);
+// ##DEBUG if (typeof(fn) !== 'function') throw Error.argument('typeName', Sys.Res.notATypeName);
         Type.__htClasses[typeName] = fn;
     }
     return fn;
@@ -434,12 +434,12 @@ Type._registerScript = function(scriptName, dependencies) {
 // #if DEBUG
 // bypass param validation in debug mode
 Type._registerNamespace("Sys");
-#else
+// #else
 Type.registerNamespace("Sys");
 // #endif
 Sys.__upperCaseTypes = {};
 Sys.__rootNamespaces = [Sys];
-##DEBUG Sys.__registeredTypes = {};
+// ##DEBUG Sys.__registeredTypes = {};
 
 // a private version of getBaseMethod and isInstanceOfType allows for other public APIs to call getBaseMethod without
 // causing a re-validation of the arguments. It's only debug mode, but the perf of debug mode was so bad in some cases
@@ -495,4 +495,5 @@ Sys._isDomElement = function(obj) {
     }
     return !val;
 }
+
 

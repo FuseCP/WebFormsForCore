@@ -105,7 +105,7 @@ String._toFormattedString = function(useLocale, args) {
 // #if DEBUG
         // at this point we have a valid opening brace, which should be matched by a closing brace.
         if (close < 0) throw Error.argument('format', Sys.Res.stringFormatBraceMismatch);
-        #else
+//         #else
         // This test is just done to break a potential infinite loop for invalid format strings.
         // The code here is minimal because this is an error condition in debug mode anyway.
         if (close < 0) break;
@@ -117,7 +117,7 @@ String._toFormattedString = function(useLocale, args) {
         var brace = format.substring(i, close);
         var colonIndex = brace.indexOf(':');
         var argNumber = parseInt((colonIndex < 0)? brace : brace.substring(0, colonIndex), 10) + 1;
-        ##DEBUG if (isNaN(argNumber)) throw Error.argument('format', Sys.Res.stringFormatInvalid);
+// ##DEBUG if (isNaN(argNumber)) throw Error.argument('format', Sys.Res.stringFormatInvalid);
         var argFormat = (colonIndex < 0)? '' : brace.substring(colonIndex + 1);
 
         var arg = args[argNumber];
@@ -143,3 +143,4 @@ String._toFormattedString = function(useLocale, args) {
 
     return result;
 }
+

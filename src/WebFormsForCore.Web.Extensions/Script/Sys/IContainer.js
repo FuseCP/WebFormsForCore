@@ -7,7 +7,7 @@
 // #endif
  
 Sys.IContainer = function() {
-    ##DEBUG throw Error.notImplemented();
+// ##DEBUG throw Error.notImplemented();
 }
 Sys.IContainer.prototype = {
 // #if DEBUG
@@ -31,5 +31,6 @@ Sys.IContainer.prototype = {
 // #endif
 }
 Sys.IContainer.registerInterface("Sys.IContainer");
+
 
 

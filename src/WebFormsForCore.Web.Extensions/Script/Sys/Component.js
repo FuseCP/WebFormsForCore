@@ -12,7 +12,7 @@ Sys.Component = function() {
 }
 Sys.Component.prototype = {
     _id: null,
-    ##DEBUG _idSet: false,
+// ##DEBUG _idSet: false,
     _initialized: false,
     _updating: false,
     get_events: function() {
@@ -110,7 +110,7 @@ function Sys$Component$_setProperties(target, properties) {
         if (isObject || typeof(getter) !== 'function') {
             // No getter, looking for an existing field.
             var targetVal = target[name];
-            ##DEBUG if (!isObject && typeof(targetVal) === 'undefined') throw Error.invalidOperation(String.format(Sys.Res.propertyUndefined, name));
+// ##DEBUG if (!isObject && typeof(targetVal) === 'undefined') throw Error.invalidOperation(String.format(Sys.Res.propertyUndefined, name));
             if (!val || (typeof(val) !== 'object') || (isObject && !targetVal)) {
                 target[name] = val;
             }
@@ -127,7 +127,7 @@ function Sys$Component$_setProperties(target, properties) {
             else if (val instanceof Array) {
                 // There is a getter but no setter and the value to set is an array. Adding to the existing array.
                 current = getter.apply(target);
-                ##DEBUG if (!(current instanceof Array)) throw new Error.invalidOperation(String.format(Sys.Res.propertyNotAnArray, name));
+// ##DEBUG if (!(current instanceof Array)) throw new Error.invalidOperation(String.format(Sys.Res.propertyNotAnArray, name));
                 for (var i = 0, j = current.length, l= val.length; i < l; i++, j++) {
                     current[j] = val[i];
                 }
@@ -135,7 +135,7 @@ function Sys$Component$_setProperties(target, properties) {
             else if ((typeof(val) === 'object') && (Object.getType(val) === Object)) {
                 // There is a getter but no setter and the value to set is a plain object. Adding to the existing object.
                 current = getter.apply(target);
-                ##DEBUG if ((typeof(current) === 'undefined') || (current === null)) throw new Error.invalidOperation(String.format(Sys.Res.propertyNullOrUndefined, name));
+// ##DEBUG if ((typeof(current) === 'undefined') || (current === null)) throw new Error.invalidOperation(String.format(Sys.Res.propertyNullOrUndefined, name));
                 Sys$Component$_setProperties(current, val);
             }
 // #if DEBUG
@@ -233,4 +233,5 @@ var $create = Sys.Component.create = function(type, properties, events, referenc
 
     return component;
 }
+
 

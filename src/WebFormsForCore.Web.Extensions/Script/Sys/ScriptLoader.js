@@ -145,7 +145,7 @@ Sys._ScriptLoader.prototype = {
                 else {
                      headElements[0].appendChild(scriptElement);
                 }
-#else
+// #else
                 document.getElementsByTagName('head')[0].appendChild(scriptElement);
 // #endif
                 
@@ -188,7 +188,7 @@ Sys._ScriptLoader.prototype = {
         var session = Array.dequeue(this._sessions);
         this._currentSession = session;
 // #if DEBUG
-        #else
+//         #else
         if(session.scriptTimeout > 0) {
             this._timeoutCookie = window.setTimeout(
                 Function.createDelegate(this, this._scriptLoadTimeoutHandler), session.scriptTimeout * 1000);
@@ -230,7 +230,7 @@ Sys._ScriptLoader.prototype = {
         }
     },
 // #if DEBUG
-    #else
+//     #else
     _scriptLoadTimeoutHandler: function() {
         var callback = this._currentSession.scriptLoadTimeoutCallback;
         this._stopSession();
@@ -243,7 +243,7 @@ Sys._ScriptLoader.prototype = {
 // #endif
     _stopSession: function() {
 // #if DEBUG
-        #else
+//         #else
         if(this._timeoutCookie) {
             window.clearTimeout(this._timeoutCookie);
             this._timeoutCookie = null;
@@ -300,7 +300,7 @@ Sys._ScriptLoader._errorScriptLoadFailed = function(scriptUrl) {
 // #if DEBUG
     // a much more detailed message is displayed in debug mode
     errorMessage = Sys.Res.scriptLoadFailedDebug;
-    #else
+//     #else
     // a simplier error is displayed in release
     errorMessage = Sys.Res.scriptLoadFailed;
 // #endif
@@ -318,4 +318,5 @@ Sys._ScriptLoader._getLoadedScripts = function() {
     }
     return Sys._ScriptLoader._referencedScripts;
 }
+
 

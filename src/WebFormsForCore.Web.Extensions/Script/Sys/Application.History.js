@@ -182,7 +182,7 @@ Sys._Application.prototype._ensureHistory = function() {
         if ((Sys.Browser.agent === Sys.Browser.InternetExplorer) && 
             ((!document.documentMode) || document.documentMode < 8)) {
             this._historyFrame = document.getElementById('__historyFrame');
-            ##DEBUG if (!this._historyFrame) throw Error.invalidOperation(Sys.Res.historyMissingFrame);
+// ##DEBUG if (!this._historyFrame) throw Error.invalidOperation(Sys.Res.historyMissingFrame);
             this._ignoreIFrame = true;
         }
         this._timerHandler = Function.createDelegate(this, this._onIdle);
@@ -358,7 +358,7 @@ Sys._Application.prototype._serializeState = function(state) {
             var serverState = value;
         }
         else {
-            ##DEBUG if (key.indexOf('=') !== -1) throw Error.argument('state', Sys.Res.stateFieldNameInvalid);
+// ##DEBUG if (key.indexOf('=') !== -1) throw Error.argument('state', Sys.Res.stateFieldNameInvalid);
             serialized[serialized.length] = key + '=' + encodeURIComponent(value);
         }
     }
@@ -429,4 +429,5 @@ Sys._Application.prototype._updateHiddenField = function(value) {
         }
     }
 };
+
 

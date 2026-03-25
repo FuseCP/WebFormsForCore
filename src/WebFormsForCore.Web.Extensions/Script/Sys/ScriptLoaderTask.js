@@ -54,7 +54,7 @@ Sys._ScriptLoaderTask.prototype = {
         else {
              headElements[0].appendChild(this._scriptElement);
         }
-#else
+// #else
         document.getElementsByTagName('head')[0].appendChild(this._scriptElement);
 // #endif
     },
@@ -160,3 +160,4 @@ Sys._ScriptLoaderTask._clearScript = function(scriptElement) {
         scriptElement.parentNode.removeChild(scriptElement);
     }
 }
+

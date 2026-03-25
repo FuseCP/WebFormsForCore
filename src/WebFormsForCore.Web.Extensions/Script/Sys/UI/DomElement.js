@@ -8,7 +8,7 @@
  
 Sys.UI.DomElement = function() {
     /// <summary>This static class provides helpers to work with DOM elements.</summary>
-    ##DEBUG throw Error.notImplemented();
+// ##DEBUG throw Error.notImplemented();
 }
 Sys.UI.DomElement.registerClass('Sys.UI.DomElement');
 
@@ -494,4 +494,5 @@ Sys.UI.DomElement._getCurrentStyle = function(element) {
     }
     return computedStyle;
 }
+
 

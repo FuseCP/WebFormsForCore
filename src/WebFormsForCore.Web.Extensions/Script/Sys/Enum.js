@@ -65,7 +65,7 @@ function Sys$Enum$toString(value) {
     // Need to do the type check manually instead of using parameter validation to be able to return
     // an error message that mentions the actual enum type that's expected instead of Number.
     if ((typeof(value) === 'undefined') || (value === null)) return this.__string;
-    ##DEBUG if ((typeof(value) != 'number') || ((value % 1) !== 0)) throw Error.argumentType('value', Object.getType(value), this);
+// ##DEBUG if ((typeof(value) != 'number') || ((value % 1) !== 0)) throw Error.argumentType('value', Object.getType(value), this);
     var values = this.prototype;
     var i;
     if (!this.__flags || (value === 0)) {
@@ -103,7 +103,7 @@ function Sys$Enum$toString(value) {
     }
 // #if DEBUG
     throw Error.argumentOutOfRange('value', value, String.format(Sys.Res.enumInvalidValue, value, this.__typeName));
-    #else
+//     #else
     return '';
 // #endif
 }
@@ -155,7 +155,7 @@ Type.prototype.registerEnum = function(name, flags) {
     this.toString = Sys$Enum$toString;
     this.__flags = flags;
     this.__enum = true;
-    ##DEBUG Sys.__registeredTypes[name] = true;
+// ##DEBUG Sys.__registeredTypes[name] = true;
 }
 
 Type.isEnum = function(type) {
@@ -171,4 +171,5 @@ Type.isFlags = function(type) {
     if ((typeof(type) === 'undefined') || (type === null)) return false;
     return !!type.__flags;
 }
+
 

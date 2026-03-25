@@ -7,7 +7,7 @@
 // #endif
  
 Sys.IDisposable = function() {
-    ##DEBUG throw Error.notImplemented();
+// ##DEBUG throw Error.notImplemented();
 }
 Sys.IDisposable.prototype = {
 // #if DEBUG
@@ -17,4 +17,5 @@ Sys.IDisposable.prototype = {
 // #endif
 }
 Sys.IDisposable.registerInterface('Sys.IDisposable');
+
 

@@ -101,7 +101,7 @@ Array.parse = function(value) {
     var v = eval(value);
     if (!Array.isInstanceOfType(v)) throw Error.argument('value', Sys.Res.arrayParseBadFormat);
     return v;
-    #else
+//     #else
     return eval(value);
 // #endif
 }
@@ -161,4 +161,5 @@ Sys._indexOf = function(array, item, start) {
     }
     return -1;
 }
+
 
