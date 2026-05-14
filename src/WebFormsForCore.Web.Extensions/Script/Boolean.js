@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Boolean.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Boolean.__typeName = 'Boolean';
 Boolean.__class = true;
@@ -17,5 +17,7 @@ Boolean.parse = function(value) {
     var v = value.trim().toLowerCase();
     if (v === 'false') return false;
     if (v === 'true') return true;
-    ##DEBUG throw Error.argumentOutOfRange('value', value, Sys.Res.boolTrueOrFalse);
+// ##DEBUG throw Error.argumentOutOfRange('value', value, Sys.Res.boolTrueOrFalse);
 }
+
+

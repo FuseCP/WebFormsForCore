@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="VisibilityMode.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.VisibilityMode = function() {
     /// <summary>
@@ -23,4 +23,5 @@ Sys.UI.VisibilityMode.prototype = {
     collapse: 1
 }
 Sys.UI.VisibilityMode.registerEnum("Sys.UI.VisibilityMode");
+
 

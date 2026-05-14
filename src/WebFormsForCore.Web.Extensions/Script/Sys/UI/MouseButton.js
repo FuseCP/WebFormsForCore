@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="MouseButton.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.UI.MouseButton = function() {
     /// <summary>
@@ -21,3 +21,4 @@ Sys.UI.MouseButton.prototype = {
     rightButton: 2
 }
 Sys.UI.MouseButton.registerEnum("Sys.UI.MouseButton");
+

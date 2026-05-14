@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="AuthenticationService.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
 
 Sys.Services._AuthenticationService = function() {
     /// <summary locid="M:J#Sys.Services.AuthenticationService.#ctor">A proxy to an authentication service.</summary>
@@ -123,11 +123,11 @@ Sys.Services._AuthenticationService.prototype = {
             var userContext = context[7] || this.get_defaultUserContext();
             callback(err, userContext, "Sys.Services.AuthenticationService.login");
         }
-        #if DEBUG
+// #if DEBUG
         else {
             Sys.Net.WebServiceProxy._defaultFailedCallback(err, methodName);
         }
-        #endif
+// #endif
     },
     
     _onLogoutComplete: function(result, context, methodName) {
@@ -159,11 +159,11 @@ Sys.Services._AuthenticationService.prototype = {
         if (callback) {
             callback(err, context[3], "Sys.Services.AuthenticationService.logout");
         }
-        #if DEBUG
+// #if DEBUG
         else {
             Sys.Net.WebServiceProxy._defaultFailedCallback(err, methodName);
         }
-        #endif
+// #endif
     },
     
     _setAuthenticated: function(authenticated) {
@@ -173,3 +173,4 @@ Sys.Services._AuthenticationService.prototype = {
 
 Sys.Services._AuthenticationService.registerClass('Sys.Services._AuthenticationService', Sys.Net.WebServiceProxy);
 Sys.Services.AuthenticationService = new Sys.Services._AuthenticationService();
+

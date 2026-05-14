@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="PageLoadedEventArgs.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.WebForms.PageLoadedEventArgs = function(panelsUpdated, panelsCreated, dataItems) {
     /// <summary>The arguments for the PageRequestManager's pageLoaded event.
@@ -41,3 +41,4 @@ Sys.WebForms.PageLoadedEventArgs.prototype = {
 }
 
 Sys.WebForms.PageLoadedEventArgs.registerClass('Sys.WebForms.PageLoadedEventArgs', Sys.EventArgs);
+

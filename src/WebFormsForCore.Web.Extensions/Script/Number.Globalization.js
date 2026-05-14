@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Number.Globalization.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
 
 Number.parseLocale = function(value) {
     /// <summary>Creates a number from its locale string representation.</summary>
@@ -140,10 +140,10 @@ Number._parseNumberNegativePattern = function(value, numFormat, numberNegativePa
                 return ['-', value.substr(1, value.length - 2)];
             }
             break;
-#if DEBUGINTERNAL
+// #if DEBUGINTERNAL
         default:
             Sys.Debug.fail("");
-#endif
+// #endif
     }
     return ['', value];
 }
@@ -379,12 +379,13 @@ Number.prototype._toFormattedString = function(format, cultureInfo) {
         case "%":
             ret += nf.PercentSymbol;
             break;
-        #if DEBUGINTERNAL
+// #if DEBUGINTERNAL
         default:
             Sys.Debug.fail("Invalid number format pattern");
-        #endif
+// #endif
         }
     }
 
     return ret;
 }
+

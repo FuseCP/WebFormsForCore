@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Date.Globalization.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
 
 Date._appendPreOrPostMatch = function(preMatch, strBuilder) {
     // appends pre- and post- token match strings while removing escaped characters.
@@ -180,10 +180,10 @@ Date._getParseRegExp = function(dtf, format) {
             case '/':
                 regexp.append("(\\" + dtf.DateSeparator + ")");
                 break;
-            #if DEBUGINTERNAL
+// #if DEBUGINTERNAL
             default:
                 Sys.Debug.fail("Invalid date format pattern");
-            #endif
+// #endif
         }
         Array.add(groups, match[0]);
     }
@@ -687,11 +687,12 @@ Date.prototype._toFormattedString = function(format, cultureInfo) {
         case "/":
             ret.append(dtf.DateSeparator);
             break;
-        #if DEBUGINTERNAL
+// #if DEBUGINTERNAL
         default:
             Sys.Debug.fail("Invalid date format pattern");
-        #endif
+// #endif
         }
     }
     return ret.toString();
 }
+

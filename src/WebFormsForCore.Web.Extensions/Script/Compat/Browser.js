@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Browser.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Sys.Browser = {};
 
@@ -43,3 +43,4 @@ else if (navigator.userAgent.indexOf(' AppleWebKit/') > -1) {
 else if (navigator.userAgent.indexOf('Opera/') > -1) {
     Sys.Browser.agent = Sys.Browser.Opera;
 }
+

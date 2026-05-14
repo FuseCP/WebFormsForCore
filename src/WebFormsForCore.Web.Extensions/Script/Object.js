@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Object.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Object.__typeName = 'Object';
 Object.__class = true;
@@ -24,3 +24,4 @@ Object.getTypeName = function(instance) {
     /// <returns type="String">The name of the type of the object.</returns>
     return Object.getType(instance).getName();
 }
+

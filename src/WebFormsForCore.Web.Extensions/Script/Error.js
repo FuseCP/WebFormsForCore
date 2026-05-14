@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Error.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 Error.__typeName = 'Error';
 Error.__class = true;
@@ -312,3 +312,4 @@ Error.prototype.popStackFrame = function() {
     stackFrames.shift();
     this.stack = stackFrames.join("\n");
 }
+

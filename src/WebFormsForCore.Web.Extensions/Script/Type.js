@@ -1,10 +1,10 @@
-#if COPYRIGHT
+// #if COPYRIGHT
 //------------------------------------------------------------------------------
 // <copyright file="Type.js" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.  All rights reserved.
 // </copyright>
 //------------------------------------------------------------------------------
-#endif
+// #endif
  
 // Define the root object (for non-browser hosts)
 if (!window) this.window = this;
@@ -19,8 +19,8 @@ window.Type = Function;
 // ********************************************************************************************
 // NOTE: update ScriptComponentDescriptor.cs with any change to this expression
 // so server and client-side are in sync.
-##DEBUG Type.__fullyQualifiedIdentifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]([^ \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*[^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\])?$", "i");
-##DEBUG Type.__identifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\][^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*$", "i");
+// ##DEBUG Type.__fullyQualifiedIdentifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]([^ \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*[^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\])?$", "i");
+// ##DEBUG Type.__identifierRegExp = new RegExp("^[^.0-9 \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\][^. \\s|,;:&*=+\\-()\\[\\]{}^%#@!~\\n\\r\\t\\f\\\\]*$", "i");
 
 Type.prototype.callBaseMethod = function(instance, name, baseArguments) {
     /// <param name="instance">The instance for the base method. Usually 'this'.</param>
@@ -30,9 +30,9 @@ Type.prototype.callBaseMethod = function(instance, name, baseArguments) {
     /// </param>
     /// <returns>The return value of the base method.</returns>
     var baseMethod = Sys._getBaseMethod(this, instance, name);
-    #if DEBUG
+// #if DEBUG
     if (!baseMethod) throw Error.invalidOperation(String.format(Sys.Res.methodNotFound, name));
-    #endif
+// #endif
     if (!baseArguments) {
         return baseMethod.apply(instance);
     }
@@ -138,9 +138,9 @@ Type.prototype.initializeBase = function(instance, baseArguments) {
     ///     The arguments for the base constructor.
     /// </param>
     /// <returns>The instance.</returns>
-    #if DEBUG
+// #if DEBUG
     if (!Sys._isInstanceOfType(this, instance)) throw Error.argumentType('instance', Object.getType(instance), this);
-    #endif
+// #endif
 
     this.resolveInheritance();
     if (this.__baseType) {
@@ -181,7 +181,7 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
     ///     One or several interfaces that the type implements.
     /// </param>
     /// <returns type="Type">The registered type.</returns>
-    #if DEBUG
+// #if DEBUG
     if (!Type.__fullyQualifiedIdentifierRegExp.test(typeName)) throw Error.argument('typeName', Sys.Res.notATypeName);
     // Check if the type name parses to an existing object that matches this.
     var parsedName;
@@ -199,7 +199,7 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
     // registerClass("Sys.Foo", Sys.BArWithATypo, Sys.ISomeInterface).
     if ((arguments.length > 1) && (typeof(baseType) === 'undefined')) throw Error.argumentUndefined('baseType');
     if (baseType && !baseType.__class) throw Error.argument('baseType', Sys.Res.baseNotAClass);
-    #endif
+// #endif
 
     this.prototype.constructor = this;
     this.__typeName = typeName;
@@ -216,10 +216,10 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
     // are actually interface parameters.
     if (interfaceTypes) {
         this.__interfaces = [];
-        ##DEBUG this.resolveInheritance();
+// ##DEBUG this.resolveInheritance();
         for (var i = 2, l = arguments.length; i < l; i++) {
             var interfaceType = arguments[i];
-            #if DEBUG
+// #if DEBUG
             if (!interfaceType.__interface) throw Error.argument('interfaceTypes[' + (i - 2) + ']', Sys.Res.notAnInterface);
             for (var methodName in interfaceType.prototype) {
                 var method = interfaceType.prototype[methodName];
@@ -227,11 +227,11 @@ Type.prototype.registerClass = function(typeName, baseType, interfaceTypes) {
                     this.prototype[methodName] = method;
                 }
             }
-            #endif
+// #endif
             this.__interfaces.push(interfaceType);
         }
     }
-    ##DEBUG Sys.__registeredTypes[typeName] = true;
+// ##DEBUG Sys.__registeredTypes[typeName] = true;
 
     return this;
 }
@@ -240,7 +240,7 @@ Type.prototype.registerInterface = function(typeName) {
     /// <summary>Registers an interface (represented by its ctor function).</summary>
     /// <param name="typeName" type="String">The fully-qualified name of the interface.</param>
     /// <returns type="Type">The registered interface.</returns>
-    #if DEBUG
+// #if DEBUG
     if (!Type.__fullyQualifiedIdentifierRegExp.test(typeName)) throw Error.argument('typeName', Sys.Res.notATypeName);
     // Check if the type name parses to an existing object that matches this.
     var parsedName;
@@ -253,14 +253,14 @@ Type.prototype.registerInterface = function(typeName) {
     if (parsedName !== this) throw Error.argument('typeName', Sys.Res.badTypeName);
     // Check for double registrations
     if (Sys.__registeredTypes[typeName]) throw Error.invalidOperation(String.format(Sys.Res.typeRegisteredTwice, typeName));
-    #endif
+// #endif
     // Saving a case-insensitive index of the registered types on each namespace
     Sys.__upperCaseTypes[typeName.toUpperCase()] = this;
 
     this.prototype.constructor = this;
     this.__typeName = typeName;
     this.__interface = true;
-    ##DEBUG Sys.__registeredTypes[typeName] = true;
+// ##DEBUG Sys.__registeredTypes[typeName] = true;
 
     return this;
 }
@@ -342,7 +342,7 @@ Type.parse = function(typeName, ns) {
     fn = Type.__htClasses[typeName];
     if (!fn) {
         fn = eval(typeName);
-        ##DEBUG if (typeof(fn) !== 'function') throw Error.argument('typeName', Sys.Res.notATypeName);
+// ##DEBUG if (typeof(fn) !== 'function') throw Error.argument('typeName', Sys.Res.notATypeName);
         Type.__htClasses[typeName] = fn;
     }
     return fn;
@@ -351,21 +351,21 @@ Type.parse = function(typeName, ns) {
 Type.registerNamespace = function(namespacePath) {
     /// <summary>Creates a namespace.</summary>
     /// <param name="namespacePath" type="String">The full path of the namespace.</param>
-    #if DEBUG
+// #if DEBUG
     // in debug mode, the private version does all the work to enable bypassing
     // the parameter validation in debug mode when registering 'Sys'.
     Type._registerNamespace(namespacePath);
 }
 Type._registerNamespace = function(namespacePath) {
     if (!Type.__fullyQualifiedIdentifierRegExp.test(namespacePath)) throw Error.argument('namespacePath', Sys.Res.invalidNameSpace);
-    #endif
+// #endif
     var rootObject = window;
     var namespaceParts = namespacePath.split('.');
 
     for (var i = 0; i < namespaceParts.length; i++) {
         var currentPart = namespaceParts[i];
         var ns = rootObject[currentPart];
-        #if DEBUG
+// #if DEBUG
         var nsType = typeof(ns);
         if ((nsType !== "undefined") && (ns !== null)) {
             if (nsType === "function") {
@@ -375,7 +375,7 @@ Type._registerNamespace = function(namespacePath) {
                 throw Error.invalidOperation(String.format(Sys.Res.namespaceContainsNonObject, namespaceParts.splice(0, i + 1).join('.')));
             }
         }
-        #endif
+// #endif
         if (!ns) {
             ns = rootObject[currentPart] = {};
         }
@@ -385,7 +385,7 @@ Type._registerNamespace = function(namespacePath) {
             }
             ns.__namespace = true;
             ns.__typeName = namespaceParts.slice(0, i + 1).join('.');
-            #if DEBUG
+// #if DEBUG
             var parsedName;
             try {
                 parsedName = eval(ns.__typeName);
@@ -397,7 +397,7 @@ Type._registerNamespace = function(namespacePath) {
                 delete rootObject[currentPart];
                 throw Error.argument('namespacePath', Sys.Res.invalidNameSpace);
             }
-            #endif
+// #endif
             ns.getName = function() {return this.__typeName;}
         }
         rootObject = ns;
@@ -431,16 +431,15 @@ Type._registerScript = function(scriptName, dependencies) {
         }
     }
 }
-
-#if DEBUG
+// #if DEBUG
 // bypass param validation in debug mode
 Type._registerNamespace("Sys");
-#else
+// #else
 Type.registerNamespace("Sys");
-#endif
+// #endif
 Sys.__upperCaseTypes = {};
 Sys.__rootNamespaces = [Sys];
-##DEBUG Sys.__registeredTypes = {};
+// ##DEBUG Sys.__registeredTypes = {};
 
 // a private version of getBaseMethod and isInstanceOfType allows for other public APIs to call getBaseMethod without
 // causing a re-validation of the arguments. It's only debug mode, but the perf of debug mode was so bad in some cases
@@ -459,9 +458,9 @@ Sys._isInstanceOfType = function(type, instance) {
 // getBaseMethod's validateParameters was shown to be a huge portion of the time spent disposing of a large
 // number of components on a page, where they all call type.callBaseMethod, which also calls getBaseMethod. 
 Sys._getBaseMethod = function(type, instance, name) {
-    #if DEBUG
+// #if DEBUG
     if (!Sys._isInstanceOfType(type, instance)) throw Error.argumentType('instance', Object.getType(instance), type);
-    #endif
+// #endif
     var baseType = type.getBaseType();
     if (baseType) {
         var baseMethod = baseType.prototype[name];
@@ -496,3 +495,5 @@ Sys._isDomElement = function(obj) {
     }
     return !val;
 }
+
+
